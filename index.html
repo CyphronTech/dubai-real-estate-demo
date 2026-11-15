@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahil Residences — Freehold homes in Dubai</title>
+<meta name="description" content="Sahil Residences buys and sells villas and apartments on Palm Jumeirah, in Emirates Hills, Downtown and Dubai Marina, with every fee shown before the first viewing.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sahil Residences — Dubai real estate concept by CyphronTech">
+<meta property="og:description" content="A concept landing page for a Dubai freehold brokerage: listings, a live cost-of-buying calculator and private viewing requests.">
+<meta property="og:image" content="https://cyphrontech.github.io/dubai-real-estate-demo/assets/dubai-skyline-at-dusk.jpg">
+<meta property="og:url" content="https://cyphrontech.github.io/dubai-real-estate-demo/">
+<meta name="twitter:card" content="summary_large_image">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/dubai-skyline-at-dusk.jpg">
+<style>
+:root {
+  --bg: #1c1c1c;
+  --surface: #262626;
+  --ink: #f1f1ef;
+  --muted: #a3a49f;
+  --accent: #8fa68e;
+  --accent-ink: #1c1c1c;
+  --field: #c8c5ba;
+  --field-ink: #1c1c1c;
+  --field-muted: #4a4a46;
+
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(4.5rem, 8.3vw, 8rem);
+
+  --m: 6vw;
+  --g: 1.25vw;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Newsreader", Georgia, serif; font-optical-sizing: auto;
+  font-size: var(--step-body); line-height: 1.55; font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+img, video { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; transition: text-underline-offset .25s var(--ease-out), opacity .2s; }
+a:hover { text-underline-offset: .32em; }
+h1, h2, h3, p, figure, dl, dd, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+.vh { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--g); padding-inline: var(--m); }
+.frame { overflow: clip; background: var(--surface); }
+.frame img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+a:hover .frame img, .frame:hover img { transform: scale(1.035); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .6em;
+  min-height: 52px; padding: 0 1.6em; border: 0; border-radius: 0; cursor: pointer;
+  background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 500;
+  font-size: var(--step-body); text-decoration: none;
+  transition: background-color .2s, transform .2s var(--ease-out);
+}
+.btn:hover { background: #a3b8a2; }
+.btn:active { transform: scale(.97); }
+.btn.dark { background: var(--field-ink); color: var(--field); }
+.btn.dark:hover { background: #333; }
+
+/* ---------- Hero ---------- */
+.hero, main { position: relative; z-index: 1; background: var(--bg); }
+.hero {
+  position: relative; height: 100svh; min-height: 700px; max-height: 1080px;
+  container-type: inline-size; overflow: clip;
+  --col: calc((100cqw - 2 * var(--m) - 11 * var(--g)) / 12);
+  --F: var(--step-display);
+}
+.nav {
+  position: absolute; inset: 0 0 auto 0; z-index: 2; height: 88px;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  padding-inline: var(--m); font-size: var(--step-small);
+}
+.nav ul { display: flex; gap: 28px; }
+.nav ul a { text-decoration: none; color: var(--ink); }
+.nav ul a:hover { text-decoration: underline; }
+.wordmark { display: inline-flex; align-items: center; gap: 10px; font-size: var(--step-lead); font-weight: 400; letter-spacing: -0.02em; text-decoration: none; }
+.wordmark svg { width: 18px; height: 26px; fill: currentColor; }
+.nav .btn { justify-self: end; min-height: 44px; font-size: var(--step-small); padding: 0 1.2em; }
+
+.hero h1 {
+  position: absolute; z-index: 1;
+  left: var(--m); top: calc(44% - 0.82 * var(--F));
+  padding-left: calc(var(--col) + var(--g));
+  font-size: var(--F); font-weight: 300; line-height: 1; letter-spacing: -0.045em;
+}
+.lines .line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.lines [data-line] { display: block; }
+.hero h1 .line + .line { padding-left: calc(4 * (var(--col) + var(--g))); }
+.hero-small {
+  position: absolute; top: 10%; left: calc(var(--m) + 9 * (var(--col) + var(--g)));
+  width: calc(3 * var(--col) + 2 * var(--g)); aspect-ratio: 16 / 10;
+}
+.hero-small figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+.hero-tall {
+  position: absolute; top: calc(44% + 24px); left: calc(var(--m) + var(--col) + var(--g));
+  width: calc(4 * var(--col) + 3 * var(--g)); aspect-ratio: 4 / 5;
+}
+.hero-tall img { animation: drift 24s ease-in-out infinite alternate; }
+@keyframes drift { from { transform: scale(1.02); } to { transform: scale(1.1) translateY(-2%); } }
+.hero-copy {
+  position: absolute; top: calc(44% + 1.22 * var(--F) + 28px);
+  left: calc(var(--m) + 5 * (var(--col) + var(--g)));
+  max-width: 38ch;
+}
+.hero-copy p { font-size: var(--step-body); margin-bottom: 28px; }
+.hero-copy p strong { font-weight: 500; }
+
+/* ---------- Intro ---------- */
+.intro { padding-top: 200px; padding-bottom: 120px; }
+.intro h2 { grid-column: 1 / 7; align-self: end; font-size: var(--step-head); font-weight: 300; line-height: 1; letter-spacing: -0.04em; }
+.intro .note { grid-column: 9 / 13; align-self: end; font-size: var(--step-body); max-width: 300px; justify-self: end; }
+.facts { grid-column: 1 / -1; margin-top: 120px; display: flex; justify-content: space-between; gap: 32px; }
+.facts dt { font-size: var(--step-head); font-weight: 300; letter-spacing: -0.035em; line-height: 1; }
+.facts dd { margin-top: 12px; font-size: var(--step-small); color: var(--muted); max-width: 22ch; }
+.orbit { grid-column: 1 / -1; margin-top: 140px; display: grid; grid-template-columns: subgrid; align-items: end; }
+.orbit-text { grid-column: 2 / 7; padding-bottom: 8px; }
+.orbit-text h3 { font-size: var(--step-lead); font-weight: 400; letter-spacing: -0.01em; margin-bottom: 16px; line-height: 1.2; }
+.orbit-text p { max-width: 42ch; }
+.orbit figure { grid-column: 8 / 13; }
+.orbit .frame { aspect-ratio: 4 / 3; }
+.orbit video { width: 100%; height: 100%; object-fit: cover; }
+.orbit figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+
+/* ---------- Listings ---------- */
+.listings { padding-top: 160px; padding-bottom: 200px; align-items: start; }
+.listings-side { grid-column: 1 / 4; display: flex; flex-direction: column; height: 100%; padding-right: 2vw; }
+.listings-side h2 { font-size: var(--step-lead); font-weight: 400; letter-spacing: -0.01em; line-height: 1.2; }
+.listings-side > a { margin-top: 10px; font-size: var(--step-body); }
+.listings-side .notes { margin-top: auto; display: grid; gap: 28px; padding-bottom: 54px; }
+.listings-side .notes p { font-size: var(--step-small); color: var(--muted); max-width: 28ch; }
+.listings-side .notes p strong { color: var(--ink); font-weight: 500; }
+.run-wrap { grid-column: 4 / -1; position: relative; min-width: 0; }
+.run {
+  display: flex; align-items: flex-end; gap: 6px; overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; scrollbar-width: none; padding-bottom: 4px;
+  --h: clamp(180px, 24vh, 250px);
+}
+.run::-webkit-scrollbar { display: none; }
+.run > li { flex: none; scroll-snap-align: start; }
+.run a { display: block; text-decoration: none; }
+.run .frame { height: var(--h); }
+.run .frame img { width: auto; height: 100%; aspect-ratio: var(--ar); }
+.run .lifted .frame { height: calc(var(--h) * 2.2); }
+.run .lifted .frame img { aspect-ratio: 4 / 5; }
+.run .lifted .meta { max-width: calc(var(--h) * 1.76); }
+.run .meta { display: flex; justify-content: space-between; gap: 18px; margin-top: 10px; font-size: var(--step-small); line-height: 1.35; }
+.run .meta span:last-child { color: var(--muted); white-space: nowrap; }
+.run .meta small { display: block; color: var(--muted); font-size: var(--step-small); }
+.run-ctrl { display: flex; gap: 6px; margin-top: 22px; }
+.run-ctrl button {
+  width: 48px; height: 48px; border: 0; border-radius: 0; background: var(--surface); color: var(--ink);
+  cursor: pointer; font: inherit; font-size: var(--step-lead); transition: background-color .2s, transform .2s var(--ease-out);
+}
+.run-ctrl button:hover { background: #333; }
+.run-ctrl button:active { transform: scale(.94); }
+
+/* ---------- Communities ---------- */
+.areas { padding-top: 40px; padding-bottom: 200px; }
+.areas h2 { grid-column: 1 / -1; font-size: var(--step-head); font-weight: 300; line-height: .98; letter-spacing: -0.04em; }
+.areas h2 span { display: block; }
+.areas h2 span:first-child { padding-left: 3vw; }
+.areas-photo { grid-column: 1 / 6; grid-row: 2; align-self: end; margin-top: 96px; }
+.areas-photo .frame { aspect-ratio: 4 / 5; }
+.areas-photo figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+.areas table { grid-column: 7 / 13; align-self: end; grid-row: 2; margin-top: 96px; border-collapse: collapse; width: 100%; font-size: var(--step-body); }
+.areas caption { caption-side: bottom; text-align: left; padding-top: 36px; font-size: var(--step-small); color: var(--muted); }
+.areas th, .areas td { padding: 13px 0; text-align: left; font-weight: 400; vertical-align: baseline; }
+.areas tbody tr:first-child th, .areas tbody tr:first-child td { padding-top: 0; }
+.areas tbody + tbody tr:first-child > * { padding-top: 44px; }
+.areas td.kind { color: var(--muted); width: 24%; }
+.areas td.val { text-align: right; white-space: nowrap; }
+.areas td.val a { text-decoration: none; display: inline-flex; gap: 10px; align-items: baseline; }
+.areas td.val a span[aria-hidden] { color: var(--accent); transition: transform .25s var(--ease-out); display: inline-block; }
+.areas td.val a:hover span[aria-hidden] { transform: translateX(4px); }
+.areas td.val a:hover { text-decoration: underline; }
+.areas tbody th[scope=rowgroup] { display: none; }
+
+/* ---------- Costs (the ledger) ---------- */
+.costs { background: var(--field); color: var(--field-ink); padding-top: 160px; padding-bottom: 180px; align-items: start; }
+.costs ::selection { background: var(--field-ink); color: var(--field); }
+.costs :focus-visible { outline-color: var(--field-ink); }
+.costs-head { grid-column: 1 / 6; }
+.costs h2 { font-size: var(--step-head); font-weight: 300; line-height: 1; letter-spacing: -0.04em; max-width: 9em; }
+.costs-head > p { margin-top: 28px; max-width: 40ch; }
+.controls { margin-top: 56px; display: grid; gap: 40px; }
+.controls fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.controls legend, .controls .lab { font-size: var(--step-body); font-weight: 500; margin-bottom: 14px; padding: 0; display: block; }
+.price-out { display: block; font-size: var(--step-lead); letter-spacing: -0.01em; margin-bottom: 10px; }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; cursor: pointer; margin: 0; }
+input[type=range]::-webkit-slider-runnable-track { height: 4px; background: rgba(28,28,28,.25); }
+input[type=range]::-moz-range-track { height: 4px; background: rgba(28,28,28,.25); }
+input[type=range]::-moz-range-progress { height: 4px; background: var(--field-ink); }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 26px; height: 26px; border-radius: 50%; background: var(--field-ink); margin-top: -11px; transition: transform .2s var(--ease-out); }
+input[type=range]::-moz-range-thumb { width: 26px; height: 26px; border: 0; border-radius: 50%; background: var(--field-ink); }
+input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
+.presets { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.presets button, .seg label {
+  min-height: 44px; padding: 0 16px; border: 0; border-radius: 0; cursor: pointer; font: inherit; font-size: var(--step-body);
+  background: rgba(28,28,28,.08); color: var(--field-ink); transition: background-color .2s, transform .2s var(--ease-out);
+  display: inline-flex; align-items: center;
+}
+.presets button:hover, .seg label:hover { background: rgba(28,28,28,.16); }
+.presets button:active, .seg label:active { transform: scale(.97); }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg input:checked + label { background: var(--field-ink); color: var(--field); }
+.seg input:focus-visible + label { outline: 2px solid var(--field-ink); outline-offset: 3px; }
+.mort-only[hidden] { display: none; }
+
+.statement { grid-column: 7 / 13; background: #d6d3c9; padding: clamp(28px, 3vw, 48px); }
+.statement h3 { font-size: var(--step-lead); font-weight: 400; line-height: 1.2; letter-spacing: -0.01em; }
+.statement .for { margin-top: 6px; font-size: var(--step-body); color: var(--field-muted); }
+.statement dl { margin-top: 36px; display: grid; gap: 18px; }
+.statement .row { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
+.statement dt { font-size: var(--step-body); }
+.statement dt small { display: block; font-size: var(--step-small); color: var(--field-muted); }
+.statement dd { font-size: var(--step-body); white-space: nowrap; }
+.statement .row[hidden] { display: none; }
+.statement .total { margin-top: 80px; }
+.statement .total p { font-size: var(--step-body); color: var(--field-muted); }
+.statement .total output { display: block; font-size: var(--step-head); font-weight: 300; letter-spacing: -0.035em; line-height: 1.05; margin-bottom: 8px; }
+.statement .monthly { margin-top: 14px; font-size: var(--step-body); }
+.statement .visa { margin-top: 28px; padding: 16px 18px; background: var(--field-ink); color: var(--field); font-size: var(--step-body); }
+.statement .visa.short { background: rgba(28,28,28,.1); color: var(--field-ink); }
+.statement .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.statement .fine { margin-top: 24px; font-size: var(--step-small); color: var(--field-muted); max-width: 60ch; }
+.flash { animation: flash .5s var(--ease-out); }
+@keyframes flash { from { opacity: .35; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Process ---------- */
+.process { padding-top: 200px; padding-bottom: 200px; row-gap: 0; }
+.process h2 { grid-column: 7 / 13; grid-row: 1; font-size: var(--step-head); font-weight: 300; line-height: 1; letter-spacing: -0.04em; }
+.process .p1 { grid-column: 1 / 5; grid-row: 1 / 3; }
+.process .p1 .frame { aspect-ratio: 3 / 4; }
+.process .t1 { grid-column: 7 / 11; grid-row: 2; margin-top: 40px; }
+.process .p2 { grid-column: 6 / 9; grid-row: 3; margin-top: 140px; }
+.process .p2 .frame { aspect-ratio: 1; }
+.process .t2 { grid-column: 9 / 13; grid-row: 3; margin-top: 140px; padding-left: var(--g); }
+.process .p3 { grid-column: 8 / 13; grid-row: 4; margin-top: 180px; }
+.process .p3 .frame { aspect-ratio: 16 / 10; }
+.process .t3 { grid-column: 3 / 8; grid-row: 4; margin-top: 180px; padding-right: 2vw; }
+.process .stage p { max-width: 38ch; font-size: var(--step-body); }
+.process .stage p + p { margin-top: 14px; color: var(--muted); font-size: var(--step-body); }
+.process .stage b { font-weight: 500; }
+.process figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+
+/* ---------- FAQ ---------- */
+.faq { background: var(--surface); padding-top: 0; padding-bottom: 0; align-items: start; }
+.faq-col { grid-column: 1 / 6; padding-top: 140px; padding-bottom: 140px; }
+.faq h2 { font-size: var(--step-head); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; }
+.faq .visit { margin-top: 32px; display: grid; gap: 6px; font-size: var(--step-body); }
+.faq .visit li span { color: var(--muted); }
+.faq .qs { margin-top: 56px; display: grid; gap: 28px; }
+.faq summary { list-style: none; cursor: pointer; font-size: var(--step-lead); line-height: 1.3; display: flex; justify-content: space-between; gap: 24px; align-items: center; min-height: 44px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: #fff; }
+.chev { flex: none; width: 12px; height: 12px; position: relative; transition: transform .3s var(--ease-out); }
+.chev::before, .chev::after { content: ""; position: absolute; top: 5px; width: 8px; height: 2px; background: var(--accent); }
+.chev::before { left: -1px; transform: rotate(45deg); }
+.chev::after { right: -1px; transform: rotate(-45deg); }
+details[open] .chev { transform: rotate(180deg); }
+.faq details p { margin-top: 12px; font-size: var(--step-body); color: var(--muted); max-width: 48ch; }
+.faq details p + p { margin-top: 10px; }
+.faq .close { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
+.faq-pics { grid-column: 7 / 13; position: relative; height: 100%; padding-bottom: 80px; }
+.faq-pics .tall { aspect-ratio: 3 / 4; width: 100%; position: sticky; top: 0; }
+.faq-pics .tall .frame { height: 100%; }
+.faq-pics .sq { position: absolute; left: -40px; bottom: 40px; width: 34%; aspect-ratio: 1; z-index: 1; }
+.faq-pics .sq .frame { height: 100%; }
+
+/* ---------- Contact ---------- */
+.contact { padding-top: 180px; padding-bottom: 140px; align-items: start; position: relative; z-index: 1; background: var(--bg); }
+.contact > p.say { grid-column: 1 / 8; max-width: 22em; font-size: clamp(1.5rem, 1.1rem + 1.2vw, 2.25rem); line-height: 1.15; letter-spacing: -0.02em; font-weight: 300; }
+.contact .pic { grid-column: 8 / 10; width: 170px; }
+.contact .pic .frame { aspect-ratio: 1; }
+.contact .pic figcaption { margin-top: 8px; font-size: var(--step-small); color: var(--muted); }
+.contact .reach { grid-column: 10 / 13; }
+.contact .reach h2 { font-size: var(--step-body); font-weight: 500; line-height: 1.3; }
+.contact .reach ul { margin-top: 20px; display: grid; gap: 8px; font-size: var(--step-body); }
+.contact .reach .where { margin-top: 18px; font-size: var(--step-small); color: var(--muted); }
+
+/* ---------- Footer ---------- */
+.foot {
+  position: sticky; bottom: 0; z-index: 0;
+  min-height: 100svh; background: var(--field); color: var(--field-ink);
+  display: grid; grid-template-rows: auto 1fr auto; padding: 40px var(--m) 22px;
+}
+.foot ::selection { background: var(--field-ink); color: var(--field); }
+.foot :focus-visible { outline-color: var(--field-ink); }
+.foot-cols { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--g); font-size: var(--step-body); }
+.foot-cols li { color: var(--field-muted); }
+.foot-cols li:first-child { color: var(--field-ink); font-weight: 500; }
+.foot-cols a { text-decoration: none; }
+.foot-cols a:hover { text-decoration: underline; }
+.credits { align-self: end; margin: 64px 0 28px; font-size: var(--step-small); color: var(--field-ink); max-width: 75ch; line-height: 1.5; }
+.foot .big { width: 100%; height: auto; display: block; fill: var(--field-ink); }
+.legal { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: var(--step-small); color: var(--field-muted); }
+
+/* ---------- Motion ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js .lines [data-line] { transform: translateY(108%); animation: rise .95s var(--ease-out) forwards; animation-delay: calc(.15s + var(--i, 0) * .11s); }
+  .js .after-title { opacity: 0; transform: translateY(14px); animation: fadeup .8s var(--ease-out) .55s forwards; }
+  .js .hero-small, .js .hero-tall { opacity: 0; animation: fadein 1.2s var(--ease-out) .3s forwards; }
+  .js [data-reveal] { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); transition-delay: calc(var(--d, 0) * 80ms); }
+  .js [data-reveal].in { opacity: 1; transform: none; }
+}
+@keyframes rise { to { transform: none; } }
+@keyframes fadeup { to { opacity: 1; transform: none; } }
+@keyframes fadein { to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-tall img { animation: none; }
+  .frame img { transition: none; }
+  html { scroll-behavior: auto; }
+}
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1100px) {
+  .nav ul { gap: 18px; }
+  .intro .note { grid-column: 8 / 13; }
+  .facts { flex-wrap: wrap; row-gap: 40px; }
+  .facts > div { flex: 1 1 40%; }
+  .listings-side { grid-column: 1 / -1; height: auto; margin-bottom: 36px; }
+  .listings-side .notes { margin-top: 24px; padding-bottom: 0; grid-template-columns: 1fr 1fr; }
+  .run-wrap { grid-column: 1 / -1; }
+  .areas table { grid-column: 6 / 13; }
+  .areas-photo { grid-column: 1 / 5; }
+  .costs-head { grid-column: 1 / -1; }
+  .controls { grid-template-columns: 1fr 1fr; }
+  .controls > :first-child { grid-column: 1 / -1; }
+  .statement { grid-column: 1 / -1; margin-top: 64px; }
+  .contact > p.say { grid-column: 1 / 8; }
+  .contact .pic { grid-column: 9 / 13; width: 150px; }
+  .contact .reach { grid-column: 9 / 13; margin-top: 24px; }
+  .contact .pic { grid-row: 1; }
+  .contact .reach { grid-row: 2; }
+  .contact > p.say { grid-row: 1 / 3; }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 760px) {
+  :root { --m: 20px; --g: 12px; }
+  .nav { height: 72px; grid-template-columns: 1fr auto; }
+  .nav ul { display: none; }
+  .wordmark { font-size: var(--step-lead); }
+  .hero { height: auto; min-height: 0; max-height: none; padding: 84px var(--m) 0; display: flex; flex-direction: column; }
+  .hero-small { position: static; width: 46%; align-self: flex-end; }
+  .hero-small figcaption { display: none; }
+  .hero h1 { position: static; padding-left: 0; margin-top: 28px; font-size: 15vw; }
+  .hero h1 .line + .line { padding-left: 22vw; }
+  .hero-copy { position: static; max-width: none; margin-top: 24px; }
+  .hero-copy p { font-size: var(--step-body); margin-bottom: 22px; }
+  .hero-copy .btn { width: 100%; }
+  .hero-tall { position: static; width: 72%; margin-top: 40px; aspect-ratio: 4 / 4.2; }
+
+  .intro { padding-top: 120px; padding-bottom: 80px; }
+  .intro h2 { grid-column: 1 / -1; font-size: var(--step-head); }
+  .intro .note { grid-column: 1 / -1; justify-self: start; max-width: none; margin-top: 20px; }
+  .facts { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .facts dt { font-size: var(--step-lead); }
+  .orbit { margin-top: 72px; display: flex; flex-direction: column-reverse; align-items: stretch; gap: 28px; }
+  .orbit-text { padding: 0; }
+
+  .listings { padding-top: 100px; padding-bottom: 120px; }
+  .listings-side .notes { grid-template-columns: 1fr; order: 3; }
+  .run { --h: 34vw; gap: 4px; flex-wrap: nowrap; }
+  .run .lifted { order: -1; }
+  .run-wrap { display: flex; flex-direction: column; }
+  .run .lifted .frame { height: calc(var(--h) * 2.2); }
+  .run .meta { font-size: var(--step-small); flex-direction: column; gap: 2px; }
+
+  .areas { padding-bottom: 120px; }
+  .areas h2 { font-size: var(--step-head); }
+  .areas h2 span:first-child { padding-left: 0; }
+  .areas table { grid-column: 1 / -1; grid-row: 2; margin-top: 48px; }
+  .areas td.kind { display: none; }
+  .areas td.place small { display: block; color: var(--muted); font-size: var(--step-small); }
+  .areas-photo { grid-column: 4 / -1; grid-row: 3; margin-top: 48px; width: auto; }
+
+  .costs { padding-top: 100px; padding-bottom: 100px; }
+  .controls { grid-template-columns: 1fr; gap: 32px; }
+  .statement { margin-top: 48px; padding: 24px 20px; margin-inline: calc(-1 * var(--m) + 8px); }
+  .statement .actions .btn { width: 100%; }
+
+  .process { padding-top: 110px; padding-bottom: 110px; display: flex; flex-direction: column; }
+  .process h2 { font-size: var(--step-head); order: 0; margin-bottom: 36px; }
+  .process .p1 { order: 1; width: 100%; }
+  .process .t1 { order: 2; margin-top: 18px; }
+  .process .p2 { order: 3; width: 62%; align-self: flex-end; margin-top: 56px; }
+  .process .t2 { order: 4; margin-top: 18px; padding-left: 0; }
+  .process .p3 { order: 5; width: 78%; margin-top: 56px; }
+  .process .t3 { order: 6; margin-top: 18px; padding-right: 0; }
+  .process .stage p { font-size: var(--step-body); }
+
+  .faq { display: flex; flex-direction: column; }
+  .faq-pics { order: -1; margin-inline: calc(-1 * var(--m)); padding: 0; height: auto; }
+  .faq-pics .tall { position: relative; aspect-ratio: 4 / 5; }
+  .faq-pics .sq { left: auto; right: var(--m); bottom: -36px; width: 38%; }
+  .faq-col { padding-top: 80px; padding-bottom: 90px; }
+  .faq h2 { font-size: var(--step-head); }
+  .faq .visit { font-size: var(--step-body); }
+  .faq .qs { gap: 24px; }
+  .faq summary { font-size: var(--step-lead); }
+  .faq .close .btn { width: 100%; }
+
+  .contact { display: grid; grid-template-columns: 96px 1fr; column-gap: 18px; padding-top: 110px; padding-bottom: 90px; }
+  .contact > p.say { grid-column: 1 / -1; grid-row: 1; font-size: 24px; margin-bottom: 40px; }
+  .contact .pic { grid-column: 1; grid-row: 2; width: 96px; }
+  .contact .pic figcaption { display: none; }
+  .contact .reach { grid-column: 2; grid-row: 2; margin-top: 0; }
+  .contact .reach ul { margin-top: 12px; font-size: var(--step-body); }
+
+  .foot { padding-top: 32px; }
+  .foot-cols { grid-template-columns: 1fr 1fr; row-gap: 32px; font-size: var(--step-small); }
+  .credits { margin-top: 20svh; }
+  .legal { flex-direction: column; }
+}
+
+/* ================= Luxury layer ================= */
+:root {
+  --bg: #0d0b09; --surface: #171411; --ink: #f4efe6; --muted: #b3aa9c;
+  --accent: #c8a96a; --accent-ink: #0d0b09; --hair: rgba(200, 169, 106, .26); --hair-soft: rgba(244, 239, 230, .09);
+  --field: #f2ede4; --field-ink: #171411; --field-muted: #5e564c;
+  --serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --sans: "Montserrat", system-ui, sans-serif;
+  --step-small: 0.8125rem;
+  --step-body: clamp(1rem, .97rem + .15vw, 1.0625rem);
+  --step-lead: clamp(1.5rem, 1.25rem + .8vw, 2rem);
+  --step-head: clamp(2.5rem, 1.5rem + 3.8vw, 5rem);
+  --step-display: clamp(5rem, 9.6vw, 9.5rem);
+  --ease-lux: cubic-bezier(.22, .61, .36, 1);
+}
+body { font-family: var(--sans); font-weight: 300; line-height: 1.8; letter-spacing: .01em; }
+b, strong { font-weight: 500; }
+h1, h2, h3, .facts dt, .price-out, .statement .total output, .contact > p.say, .faq summary, .wordmark { font-family: var(--serif); letter-spacing: -0.01em; }
+h2, h3 { font-weight: 300 !important; }
+figcaption { font-family: var(--serif); font-style: italic; font-size: 1rem !important; letter-spacing: .01em; }
+a { text-decoration-color: var(--hair); }
+a:hover { text-decoration-color: var(--accent); }
+
+/* buttons */
+.btn {
+  font-family: var(--sans); font-size: .8125rem !important; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+  min-height: 54px; padding: 0 2.4em; background: var(--accent); color: var(--accent-ink);
+  transition: background-color .5s var(--ease-lux), color .5s var(--ease-lux), box-shadow .5s var(--ease-lux), transform .2s;
+}
+.btn:hover { background: var(--ink); }
+.btn.ghost { background: transparent; color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.btn.ghost:hover { background: var(--accent); color: var(--accent-ink); }
+.btn.dark { background: var(--field-ink); color: var(--field); }
+.btn.dark:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* nav: fixed, solid once scrolled */
+.nav {
+  position: fixed; height: 92px; font-family: var(--sans); font-size: .75rem; font-weight: 500;
+  letter-spacing: .2em; text-transform: uppercase; z-index: 20; font-size: .8125rem;
+  transition: background-color .6s var(--ease-lux), height .6s var(--ease-lux), box-shadow .6s var(--ease-lux);
+}
+.nav.scrolled { height: 72px; background: rgba(13, 11, 9, .9); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--hair); }
+.nav ul { gap: 36px; }
+.nav ul a { position: relative; padding: 14px 0; }
+.nav ul a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 8px; height: 1px; background: var(--accent); transition: right .5s var(--ease-lux); }
+.nav ul a:hover { text-decoration: none; color: var(--accent); }
+.nav ul a:hover::after { right: 0; }
+.wordmark { font-size: 1.75rem; font-weight: 400; letter-spacing: .02em; text-transform: none; }
+.wordmark span { line-height: 1; }
+.wordmark small { display: block; font-family: var(--sans); font-size: .625rem; font-weight: 500; letter-spacing: .38em; text-transform: uppercase; color: var(--accent); margin-top: 4px; }
+.wordmark svg { fill: var(--accent); }
+.nav .btn { min-height: 46px; padding: 0 1.8em; }
+
+/* hero */
+.hero h1 { font-weight: 300; letter-spacing: -0.025em; line-height: .95; }
+.hero h1 em { font-style: italic; font-weight: 300; color: var(--accent); }
+.hero-copy p { color: var(--muted); font-size: 1.125rem; line-height: 1.85; }
+.hero-copy p strong { color: var(--ink); }
+.hero::after { content: ""; position: absolute; left: var(--m); right: var(--m); bottom: 0; height: 1px; background: var(--hair); }
+
+/* intro and facts */
+.intro { padding-top: 220px; }
+.facts { gap: 4vw; }
+.facts > div { flex: 1; padding-top: 30px; box-shadow: inset 0 1px 0 var(--hair); }
+.facts dt { color: var(--accent); font-weight: 300; font-size: clamp(2.75rem, 1.8rem + 3vw, 4.75rem); }
+.facts dd { font-size: .9375rem; line-height: 1.7; }
+
+/* listings */
+.listings-side h2 { font-size: clamp(2rem, 1.4rem + 1.6vw, 2.75rem); line-height: 1.05; }
+.run { gap: 14px; }
+.run .meta { font-size: .9375rem; margin-top: 16px; }
+.run .meta > span:first-child { font-family: var(--serif); font-size: 1.25rem; line-height: 1.25; }
+.run .meta small { font-family: var(--sans); font-size: .875rem; letter-spacing: .02em; margin-top: 4px; }
+.run .meta span:last-child { color: var(--accent); font-family: var(--serif); font-size: 1.25rem; }
+.run-ctrl button { background: transparent; box-shadow: inset 0 0 0 1px var(--hair); color: var(--accent); transition: background-color .4s, color .4s, transform .2s; }
+.run-ctrl button:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* communities table */
+.areas th, .areas td { padding: 18px 0 !important; box-shadow: inset 0 -1px 0 var(--hair-soft); font-size: 1rem; }
+.areas td.place { font-family: var(--serif); font-size: 1.25rem; }
+.areas tbody + tbody tr:first-child > * { padding-top: 48px !important; }
+.areas td.kind { font-size: .8125rem; letter-spacing: .16em; text-transform: uppercase; }
+.areas td.val a { color: var(--accent); }
+
+/* costs */
+.statement { background: #fbf8f3; box-shadow: inset 0 2px 0 var(--accent); }
+.statement dl { gap: 0; }
+.statement .row { padding: 15px 0; box-shadow: inset 0 -1px 0 rgba(23, 20, 17, .09); }
+.statement dt, .statement dd { font-size: 1rem; }
+.statement dt small { font-size: .8125rem; margin-top: 2px; }
+.statement h3 { font-size: 1.75rem; }
+.statement .total output { font-size: clamp(2.75rem, 1.8rem + 3vw, 4.5rem); }
+.statement .visa { background: var(--field-ink); color: var(--accent); font-family: var(--serif); font-size: 1.25rem; font-style: italic; line-height: 1.4; }
+.statement .visa.short { background: transparent; color: var(--field-ink); box-shadow: inset 0 0 0 1px rgba(23, 20, 17, .2); }
+.price-out { font-size: 2.25rem; font-weight: 300; }
+.presets button, .seg label { background: transparent; box-shadow: inset 0 0 0 1px rgba(23, 20, 17, .22); font-size: .8125rem; letter-spacing: .06em; transition: background-color .4s, color .4s, transform .2s; }
+.presets button:hover, .seg label:hover { background: rgba(23, 20, 17, .06); }
+.seg input:checked + label { background: var(--field-ink); color: var(--field); box-shadow: none; }
+input[type=range]::-webkit-slider-runnable-track { height: 1px; background: rgba(23, 20, 17, .35); }
+input[type=range]::-moz-range-track { height: 1px; background: rgba(23, 20, 17, .35); }
+input[type=range]::-webkit-slider-thumb { margin-top: -12px; background: var(--accent); box-shadow: 0 0 0 1px var(--field-ink), 0 0 0 6px var(--field); }
+input[type=range]::-moz-range-thumb { background: var(--accent); box-shadow: 0 0 0 1px var(--field-ink); }
+
+/* process */
+.process .stage p { font-size: 1rem; }
+.process .stage b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 1.375rem; color: var(--accent); line-height: 1.2; }
+
+/* faq */
+.faq .qs { gap: 0; }
+.faq details { box-shadow: inset 0 -1px 0 var(--hair); padding: 14px 0; }
+.faq details:first-child { box-shadow: inset 0 1px 0 var(--hair), inset 0 -1px 0 var(--hair); }
+.faq summary { font-size: 1.375rem !important; font-weight: 400; }
+.faq summary:hover { color: var(--accent); }
+.faq details p { font-size: 1rem; line-height: 1.85; padding-bottom: 8px; }
+.faq .visit { font-size: 1rem; }
+
+/* contact */
+.contact > p.say { font-weight: 300; line-height: 1.2; }
+.contact .reach h2 { font-family: var(--serif); font-size: 1.5rem; }
+.contact .reach ul { font-size: 1rem; }
+
+/* footer: dark, gold wordmark */
+.foot { background: #080706; color: var(--ink); box-shadow: inset 0 1px 0 var(--hair); }
+.foot ::selection { background: var(--accent); color: var(--accent-ink); }
+.foot :focus-visible { outline-color: var(--accent); }
+.foot-cols { font-size: .875rem; }
+.foot-cols li { color: var(--muted); }
+.foot-cols li:first-child { color: var(--accent); font-weight: 500; font-size: .75rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 8px; }
+.credits { color: var(--muted); font-size: .8125rem; max-width: 70ch; }
+.foot .big { fill: var(--accent); }
+.legal { color: var(--muted); font-size: .8125rem; letter-spacing: .04em; }
+
+/* premium reveals */
+@media (prefers-reduced-motion: no-preference) {
+  .js .hero-tall { opacity: 1; animation: wipe 1.8s var(--ease-lux) .25s both; }
+  .js .hero-small { opacity: 1; animation: wipe 1.6s var(--ease-lux) .6s both; }
+  .js .lines [data-line] { animation-duration: 1.3s; animation-timing-function: var(--ease-lux); }
+  .js .after-title { animation-duration: 1.2s; animation-delay: .9s; }
+  .js [data-reveal] { transition-duration: 1.2s; transition-timing-function: var(--ease-lux); }
+  .js [data-reveal] .frame { clip-path: inset(0 0 100% 0); transition: clip-path 1.3s var(--ease-lux) calc(var(--d, 0) * 90ms + 120ms); }
+  .js [data-reveal].in .frame { clip-path: inset(0); }
+  .js [data-reveal] .frame img { transform: scale(1.16); transition: transform 2.4s var(--ease-lux); }
+  .js [data-reveal].in .frame img { transform: scale(1); }
+  .js [data-reveal].in a:hover .frame img, .js [data-reveal].in .frame:hover img { transform: scale(1.04); }
+}
+@keyframes wipe { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0); } }
+
+@media (max-width: 760px) {
+  .nav { height: 72px; }
+  .wordmark { font-size: 1.5rem; }
+  .wordmark small { display: none; }
+  .nav .btn { padding: 0 1.1em; letter-spacing: .16em; }
+  .facts { gap: 28px 20px; }
+  .facts dt { font-size: 2.5rem; }
+  .run .meta > span:first-child, .run .meta span:last-child { font-size: 1.0625rem; }
+  .areas td.place { font-size: 1.125rem; }
+  .hero::after { display: none; }
+}
+
+/* footer accessibility: clear the fixed nav, real headings, visible focus */
+html { scroll-padding-top: 96px; }
+.foot { padding-top: 128px !important; }
+.foot-cols h2 { margin: 0 0 12px; font-family: var(--sans); font-size: .8125rem !important; font-weight: 500 !important; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
+.foot-cols address { font-style: normal; color: var(--muted); line-height: 1.8; }
+.foot-cols ul { display: grid; gap: 2px; }
+.foot-cols li, .foot-cols li:first-child { color: var(--muted); font-size: .9375rem; font-weight: 300; letter-spacing: .01em; text-transform: none; margin: 0; }
+.foot-cols a { display: inline-block; padding: 6px 0; min-height: 32px; color: var(--ink); }
+.foot-cols a:hover { color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent); }
+.foot a:focus-visible, .foot-cols a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.credits a { color: var(--ink); text-decoration-color: rgba(244, 239, 230, .45); }
+@media (max-width: 760px) { .foot { padding-top: 104px !important; } html { scroll-padding-top: 80px; } }
+
+/* ================= Palette: ivory, Gulf navy and gold ================= */
+/* Base from the "Luxury navy + gold" hospitality palette, warmed toward Dubai sand. */
+:root {
+  --bg: #f7f2ea;            /* ivory ground */
+  --surface: #ece4d6;       /* sand */
+  --ink: #1b2838;           /* Gulf navy, 13:1 on ivory */
+  --muted: #566170;         /* 6:1 on ivory */
+  --accent: #85590f;        /* gold, text-safe 5:1+ on ivory */
+  --gold: #a47833;          /* gold for large type, 3:1+ on ivory */
+  --accent-ink: #1b2838;
+  --hair: rgba(154, 106, 20, .28);
+  --hair-soft: rgba(27, 40, 56, .1);
+  --field: #ece4d6; --field-ink: #1b2838; --field-muted: #566170;
+  --navy: #172536; --navy-deep: #111c2a;
+}
+::selection { background: var(--ink); color: var(--bg); }
+
+/* nav on ivory */
+.nav.scrolled { background: rgba(247, 242, 234, .92); box-shadow: 0 1px 0 var(--hair); }
+.nav ul a, .wordmark { color: var(--ink); }
+.wordmark svg { fill: var(--gold); }
+
+/* buttons: gold fill with navy text; navy on hover */
+.btn { background: #c9a463; color: var(--ink); }
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn.ghost { color: var(--ink); box-shadow: inset 0 0 0 1px #c9a463; background: transparent; }
+.btn.ghost:hover { background: var(--ink); color: var(--bg); box-shadow: inset 0 0 0 1px var(--ink); }
+.btn.dark { background: var(--ink); color: var(--bg); }
+.btn.dark:hover { background: #c9a463; color: var(--ink); }
+
+/* large gold type stays decorative gold */
+.hero h1 em, .facts dt { color: var(--gold); }
+.hero h1 { color: var(--ink); }
+.run-ctrl button { color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); }
+.run-ctrl button:hover { background: var(--ink); color: var(--bg); }
+
+/* costs: sand field with a white statement card */
+.costs { background: var(--surface); }
+.statement { background: #fffdf9; box-shadow: inset 0 2px 0 var(--gold); }
+.statement .visa { background: var(--ink); color: #e3c88f; }
+.costs .seg input:checked + label { background: var(--ink); color: var(--bg); }
+
+/* one deep band: the questions section in Gulf navy */
+.faq {
+  background: var(--navy);
+  --ink: #f3eee5; --muted: #b9c1cc; --accent: #d4b47a; --gold: #d4b47a;
+  --hair: rgba(212, 180, 122, .3); --surface: #1f3045;
+  color: var(--ink);
+}
+.faq .btn { background: var(--gold); color: #172536; }
+.faq .btn:hover { background: #f3eee5; color: #172536; }
+
+/* footer in deep navy with a gold wordmark */
+.foot {
+  background: var(--navy-deep);
+  --ink: #f3eee5; --muted: #b9c1cc; --accent: #d4b47a; --gold: #d4b47a;
+  --hair: rgba(212, 180, 122, .3);
+  color: var(--ink); box-shadow: none;
+}
+.foot .big { fill: var(--gold); }
+.foot ::selection { background: var(--gold); color: #111c2a; }
+
+/* ================= Hero v2: framed full-bleed slideshow + search ================= */
+.hx { position: relative; z-index: 1; background: var(--bg); padding: 92px var(--m) 0; }
+.hx-stage { position: relative; height: calc(100svh - 92px - 40px); min-height: 620px; max-height: 980px; overflow: hidden; background: #1b2838; }
+.hx-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.6s var(--ease-lux); }
+.hx-slide.on { opacity: 1; }
+.hx-slide img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); }
+.hx-slide:nth-child(1) img { object-position: 50% 70%; }
+@media (prefers-reduced-motion: no-preference) {
+  .hx-slide.on img { animation: hx-kb 9s linear forwards; }
+}
+@keyframes hx-kb { from { transform: scale(1.06); } to { transform: scale(1); } }
+.hx-scrim {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(17, 28, 42, .84) 0%, rgba(17, 28, 42, .58) 36%, rgba(17, 28, 42, .1) 70%),
+    linear-gradient(0deg, rgba(17, 28, 42, .6) 0%, rgba(17, 28, 42, 0) 38%);
+}
+.hx-copy { position: absolute; z-index: 2; left: clamp(28px, 5vw, 88px); bottom: clamp(150px, 19vh, 210px); max-width: 660px; color: #f7f2ea; }
+.hx-kicker { display: flex; align-items: center; gap: 16px; margin: 0 0 28px; font: 500 .8125rem/1.4 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: #e2c48a; }
+.hx-kicker::before { content: ""; width: 44px; height: 1px; background: #e2c48a; flex: none; }
+.hx h1 { margin: 0; font-family: var(--serif); font-weight: 300; font-size: clamp(3.75rem, 8.4vw, 8.75rem); line-height: .92; letter-spacing: -0.02em; color: #f7f2ea; }
+.hx h1 em { display: block; padding-left: .85em; font-style: italic; color: #e2c48a; }
+.hx-lead { margin: 30px 0 0; max-width: 34em; font-size: 1.125rem; line-height: 1.75; color: rgba(247, 242, 234, .92); }
+.hx-lead strong { color: #fff; font-weight: 500; }
+.hx-actions { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 14px; }
+.btn.light-ghost { background: transparent; color: #f7f2ea; box-shadow: inset 0 0 0 1px rgba(247, 242, 234, .65); }
+.btn.light-ghost:hover { background: #f7f2ea; color: var(--ink); }
+.hx :focus-visible { outline-color: #e2c48a; }
+
+.hx-ctrl { position: absolute; z-index: 2; right: clamp(24px, 3.2vw, 56px); bottom: clamp(150px, 19vh, 210px); width: 230px; display: grid; gap: 2px; }
+.hx-ctrl button {
+  position: relative; min-height: 44px; padding: 12px 0 10px; border: 0; background: none; cursor: pointer; text-align: left;
+  font: 500 .8125rem/1.2 var(--sans); letter-spacing: .16em; text-transform: uppercase; color: rgba(247, 242, 234, .62);
+  transition: color .4s var(--ease-lux);
+}
+.hx-ctrl button:hover, .hx-ctrl button.on { color: #f7f2ea; }
+.hx-ctrl .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: rgba(247, 242, 234, .25); overflow: hidden; }
+.hx-ctrl .bar::after { content: ""; position: absolute; inset: 0; background: #e2c48a; transform: scaleX(0); transform-origin: left; }
+.hx-ctrl .on .bar::after { animation: hx-prog 7s linear forwards; }
+.hx.paused .hx-ctrl .on .bar::after, .hx.static .hx-ctrl .on .bar::after { animation: none; transform: scaleX(1); }
+@keyframes hx-prog { to { transform: scaleX(1); } }
+.hx-ctrl .hx-pause { margin-top: 10px; color: #e2c48a; letter-spacing: .12em; text-decoration: underline; text-decoration-color: rgba(226, 196, 138, .5); text-underline-offset: .35em; }
+
+.hx-search {
+  position: relative; z-index: 3; margin: -88px clamp(28px, 5vw, 88px) 0;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; background: #fffdf9;
+  box-shadow: 0 34px 70px -34px rgba(17, 28, 42, .45), inset 0 2px 0 var(--gold);
+}
+.hx-field { position: relative; padding: 22px 28px 18px; box-shadow: inset -1px 0 0 var(--hair-soft); }
+.hx-field label { display: block; margin-bottom: 4px; font: 500 .8125rem/1.2 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+.hx-field select {
+  -webkit-appearance: none; appearance: none; width: 100%; min-height: 44px; padding: 0 28px 0 0; border: 0; border-radius: 0; background: transparent; cursor: pointer;
+  font: 400 1.375rem/1.2 var(--serif); color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2385590f' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 2px center;
+}
+.hx-field select:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.hx-field:hover { background: #fbf6ee; }
+.hx-search .btn { min-height: 100%; padding: 0 2.6em; }
+
+/* listing filter feedback */
+.run-status { font-size: .9375rem; color: var(--ink); }
+.run-status button { margin-left: 6px; padding: 0; border: 0; background: none; font: inherit; color: var(--accent); text-decoration: underline; text-underline-offset: .25em; cursor: pointer; min-height: 32px; }
+.run > li[hidden] { display: none; }
+
+@media (max-width: 1100px) {
+  .hx-ctrl { width: 200px; }
+  .hx-copy { max-width: 560px; }
+  .hx-search { grid-template-columns: 1fr 1fr; }
+  .hx-search .btn { grid-column: 1 / -1; min-height: 58px; }
+}
+@media (max-width: 760px) {
+  .hx { padding: 72px 0 0; }
+  .hx-stage { height: 86svh; min-height: 600px; max-height: none; }
+  .hx-scrim { background: linear-gradient(0deg, rgba(17, 28, 42, .9) 0%, rgba(17, 28, 42, .55) 55%, rgba(17, 28, 42, .2) 100%); }
+  .hx-copy { left: 20px; right: 20px; bottom: 92px; }
+  .hx-kicker { font-size: .75rem; letter-spacing: .16em; margin-bottom: 20px; }
+  .hx-kicker::before { width: 24px; }
+  .hx h1 { font-size: 16vw; }
+  .hx h1 em { padding-left: .6em; }
+  .hx-lead { font-size: 1.125rem; margin-top: 20px; }
+  .hx-actions { margin-top: 24px; }
+  .hx-actions .btn { flex: 1 1 100%; }
+  .hx-ctrl { left: 20px; right: 20px; bottom: 24px; width: auto; grid-template-columns: repeat(4, 1fr) auto; gap: 8px; align-items: end; }
+  .hx-ctrl button span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .hx-ctrl button { min-height: 44px; padding: 0; }
+  .hx-ctrl .hx-pause { margin: 0; font-size: .75rem; padding-left: 8px; }
+  .hx-search { margin: -28px 16px 0; grid-template-columns: 1fr; }
+  .hx-field { box-shadow: inset 0 -1px 0 var(--hair-soft); padding: 16px 20px 12px; }
+  .hx-search .btn { grid-column: auto; }
+}
+
+/* ================= v5: listings grid ================= */
+.lst { padding: 200px var(--m) 180px; }
+.lst-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 32px 48px; margin-bottom: 28px; }
+.lst h2 { font-size: var(--step-head); line-height: 1; margin: 0; }
+.lst-note { margin-top: 18px; max-width: 52ch; color: var(--muted); font-size: 1rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px; cursor: pointer; background: transparent;
+  box-shadow: inset 0 0 0 1px var(--hair); color: var(--ink); font: 500 .8125rem/1 var(--sans); letter-spacing: .08em;
+  transition: background-color .35s var(--ease-lux), color .35s var(--ease-lux), box-shadow .35s var(--ease-lux);
+}
+.chip:hover { box-shadow: inset 0 0 0 1px var(--ink); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); box-shadow: none; }
+.lst .run-status { min-height: 1.6em; margin: 0 0 22px; }
+.lst-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 28px; margin: 0; padding: 0; list-style: none; }
+.card > a { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; }
+.card-img { position: relative; aspect-ratio: 4 / 3; }
+/* the first and last cards run two columns wide so 7 homes fill three rows */
+.card.feat, .card.wide { grid-column: span 2; }
+.card.feat .card-img, .card.wide .card-img { aspect-ratio: auto; flex: 1; min-height: 320px; }
+.card.feat .card-img img, .card.wide .card-img img { position: absolute; inset: 0; }
+.tag {
+  position: absolute; top: 16px; left: 16px; padding: 7px 12px; background: rgba(247, 242, 234, .94); color: var(--ink);
+  font: 500 .8125rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase;
+}
+.card-body { padding-top: 20px; }
+.card-where { margin: 0; font: 500 .8125rem/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.card-name { margin: 8px 0 0; font-family: var(--serif); font-weight: 400 !important; font-size: 1.625rem; line-height: 1.15; transition: color .35s var(--ease-lux); }
+.card.feat .card-name { font-size: clamp(1.875rem, 1.2rem + 1.4vw, 2.5rem); }
+.card a:hover .card-name { color: var(--accent); }
+.card-spec { display: flex; flex-wrap: wrap; gap: 4px 0; margin: 12px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .9375rem; }
+.card-spec li + li::before { content: "·"; margin: 0 10px; color: var(--gold); }
+.card-price { margin: 14px 0 0; font-family: var(--serif); font-size: 1.5rem; color: var(--ink); }
+.card a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.card[hidden] { display: none; }
+.lst-more { margin: 56px 0 0; text-align: center; }
+.lst-more a { font: 500 .8125rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); text-underline-offset: .6em; }
+
+/* ================= v5: enquiry ================= */
+.enq { display: grid; grid-template-columns: 5fr 7fr; gap: 0 clamp(40px, 6vw, 110px); align-items: start; padding: 180px var(--m) 160px; position: relative; z-index: 1; background: var(--bg); }
+.enq-pic { margin: 0; position: sticky; top: 110px; }
+.enq-pic .frame { aspect-ratio: 4 / 5; }
+.enq-pic figcaption { margin-top: 12px; color: var(--muted); }
+.enq h2 { margin: 0; font-size: var(--step-head); line-height: 1; }
+.enq-lead { margin-top: 22px; max-width: 46ch; font-size: 1.0625rem; color: var(--muted); }
+.enq-form { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px 32px; }
+.fld.wide, .enq-send.wide { grid-column: 1 / -1; }
+.fld label { display: block; margin-bottom: 8px; font: 500 .8125rem/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--ink); }
+.fld .opt { letter-spacing: .04em; text-transform: none; color: var(--muted); font-weight: 400; }
+.fld input, .fld select, .fld textarea {
+  width: 100%; min-height: 48px; padding: 10px 0; border: 0; border-radius: 0; background: transparent; color: var(--ink);
+  box-shadow: inset 0 -1px 0 rgba(27, 40, 56, .3); font: 400 1.25rem/1.4 var(--serif); transition: box-shadow .3s var(--ease-lux);
+  -webkit-appearance: none; appearance: none;
+}
+.fld select { cursor: pointer; padding-right: 24px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2385590f' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 2px center; }
+.fld textarea { resize: vertical; min-height: 96px; }
+.fld input::placeholder, .fld textarea::placeholder { color: #8a8f97; font-style: italic; }
+.fld input:focus, .fld select:focus, .fld textarea:focus { outline: none; box-shadow: inset 0 -2px 0 var(--accent); }
+.fld input:focus-visible, .fld select:focus-visible, .fld textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.fld input:user-invalid { box-shadow: inset 0 -2px 0 #b3261e; }
+.enq-send { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 8px; }
+.enq-hint { margin: 0; font-size: .875rem; color: var(--muted); }
+.enq-direct { margin: 56px 0 0; padding: 28px 0 0; list-style: none; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 12px 48px; box-shadow: inset 0 1px 0 var(--hair); font-size: 1rem; }
+.enq-direct span { display: block; margin-bottom: 4px; font: 500 .8125rem/1.3 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.enq-direct a { color: var(--ink); }
+
+/* ================= v5: mobile menu ================= */
+.nav-toggle { display: none; }
+.mnav[hidden] { display: none !important; }
+
+@media (max-width: 1100px) {
+  .lst-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .card.feat { grid-column: 1 / -1; grid-row: auto; }
+  .card.feat .card-img { flex: none; aspect-ratio: 16 / 9; min-height: 0; }
+  .card.wide { grid-column: auto; }
+  .card.wide .card-img { flex: none; aspect-ratio: 4 / 3; min-height: 0; }
+  .lst-head { grid-template-columns: 1fr; }
+  .enq { grid-template-columns: 1fr; }
+  .enq-pic { position: relative; top: 0; max-width: 520px; margin-bottom: 56px; }
+  .enq-pic .frame { aspect-ratio: 16 / 10; }
+}
+@media (max-width: 760px) {
+  .lst { padding: 110px var(--m) 110px; }
+  .lst-grid { grid-template-columns: 1fr; gap: 40px; }
+  .card.feat .card-img { aspect-ratio: 4 / 3; }
+  .chips { gap: 6px; }
+  .chip { padding: 0 16px; }
+  .enq { padding: 110px var(--m) 100px; }
+  .enq-form { grid-template-columns: 1fr; gap: 24px; }
+  .enq-send .btn { width: 100%; }
+  .enq-direct { grid-template-columns: 1fr; gap: 18px; }
+
+  .nav { grid-template-columns: 1fr auto; }
+  .nav > .btn.ghost { display: none; }
+  .nav-toggle {
+    display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 2px 0 12px; border: 0; background: none; cursor: pointer;
+    font: 500 .8125rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--ink); justify-self: end;
+  }
+  .nt-bars { position: relative; width: 22px; height: 10px; }
+  .nt-bars::before, .nt-bars::after { content: ""; position: absolute; left: 0; right: 0; height: 1.5px; background: var(--ink); transition: transform .4s var(--ease-lux), top .4s var(--ease-lux); }
+  .nt-bars::before { top: 0; }
+  .nt-bars::after { top: 8.5px; }
+  .nav-toggle[aria-expanded="true"] .nt-bars::before { top: 4.25px; transform: rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nt-bars::after { top: 4.25px; transform: rotate(-45deg); }
+  .nav.menu-open { background: var(--bg); box-shadow: 0 1px 0 var(--hair); }
+  .mnav {
+    position: fixed; left: 0; right: 0; top: 72px; bottom: 0; z-index: 19; overflow-y: auto;
+    display: flex; flex-direction: column; gap: 32px; padding: 32px 20px 40px; background: var(--bg);
+    text-transform: none; letter-spacing: 0;
+  }
+  .mnav ul { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+  .mnav li a { display: block; padding: 14px 0; font: 300 2.25rem/1.1 var(--serif); color: var(--ink); text-decoration: none; box-shadow: inset 0 -1px 0 var(--hair-soft); }
+  .mnav li a::after { display: none; }
+  .mnav .btn { width: 100%; }
+  .mnav p { margin: 0; font: 400 .9375rem/1.5 var(--sans); color: var(--muted); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .mnav:not([hidden]) li { animation: fadeup .6s var(--ease-lux) both; }
+  .mnav:not([hidden]) li:nth-child(2) { animation-delay: .05s; }
+  .mnav:not([hidden]) li:nth-child(3) { animation-delay: .1s; }
+  .mnav:not([hidden]) li:nth-child(4) { animation-delay: .15s; }
+  .mnav:not([hidden]) li:nth-child(5) { animation-delay: .2s; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Main">
+    <ul>
+      <li><a href="#listings">Listings</a></li>
+      <li><a href="#communities">Communities</a></li>
+      <li><a href="#costs">Costs</a></li>
+      <li><a href="#questions">Questions</a></li>
+    </ul>
+    <a class="wordmark" href="#top" aria-label="Sahil Residences, home">
+      <svg viewBox="0 0 18 26" aria-hidden="true"><path d="M0 26V6h2V2h14v4h2v20h-5V14h-2v12H7V14H5v12z M4 6h2v5H4z M8 6h2v5H8z M12 6h2v5h-2z" fill-rule="evenodd"/></svg>
+      <span>Sahil<small>Concept demo · Dubai</small></span>
+    </a>
+    <a class="btn ghost" href="#contact">Book a viewing</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mnav"><span class="nt-bars" aria-hidden="true"></span><span class="nt-label">Menu</span></button>
+    <div class="mnav" id="mnav" hidden>
+      <ul>
+        <li><a href="#listings">Listings</a></li>
+        <li><a href="#communities">Communities</a></li>
+        <li><a href="#costs">Costs</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="btn" href="#contact">Book a private viewing</a>
+      <p>contact@cyphrontech.com · +91 82752 57252</p>
+    </div>
+  </nav>
+
+<header class="hx" id="top">
+  <section class="hx-stage" aria-roledescription="carousel" aria-label="Dubai, in four views">
+    <figure class="hx-slide on" aria-roledescription="slide" aria-label="1 of 4">
+      <img src="assets/dubai-skyline-at-dusk.jpg" width="3761" height="2149" alt="The Dubai skyline and Burj Khalifa in a golden dusk haze" fetchpriority="high">
+    </figure>
+    <figure class="hx-slide" aria-roledescription="slide" aria-label="2 of 4">
+      <img src="assets/vereinigte-arabische-emirate-atlantis-on-palm-jumeirah.jpg" width="3840" height="2880" alt="Aerial view of the crescent of Palm Jumeirah and turquoise water of the Gulf" decoding="async">
+    </figure>
+    <figure class="hx-slide" aria-roledescription="slide" aria-label="3 of 4">
+      <img src="assets/dubai-marina-skyline-93.jpg" width="3293" height="2195" alt="Dubai Marina towers lit at night, reflected in the marina water" decoding="async">
+    </figure>
+    <figure class="hx-slide" aria-roledescription="slide" aria-label="4 of 4">
+      <img src="assets/u-1613490493576-7fde63acd811.jpg" width="1600" height="1067" alt="A modern two-storey villa with timber soffits behind a dark-tiled pool" decoding="async">
+    </figure>
+    <div class="hx-scrim" aria-hidden="true"></div>
+
+    <div class="hx-copy">
+      <p class="hx-kicker after-title">Palm Jumeirah · Emirates Hills · Downtown · Marina</p>
+      <h1 class="lines" aria-label="Freehold in Dubai">
+        <span class="line" aria-hidden="true"><span data-line style="--i:0">Freehold</span></span>
+        <span class="line" aria-hidden="true"><span data-line style="--i:1"><em>in Dubai</em></span></span>
+      </h1>
+      <p class="hx-lead after-title"><strong>Sahil Residences</strong> buys and sells villas and apartments across Dubai’s freehold districts, and shows you every dirham of the fees before the first viewing.</p>
+      <div class="hx-actions after-title">
+        <a class="btn" href="#listings">See the homes for sale</a>
+        <a class="btn light-ghost" href="#contact">Book a private viewing</a>
+      </div>
+    </div>
+
+    <div class="hx-ctrl" role="group" aria-label="Choose a view">
+      <button type="button" class="on" data-go="0" aria-pressed="true"><span>Downtown at dusk</span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" data-go="1" aria-pressed="false"><span>Palm Jumeirah</span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" data-go="2" aria-pressed="false"><span>Dubai Marina</span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" data-go="3" aria-pressed="false"><span>A villa we sell</span><i class="bar" aria-hidden="true"></i></button>
+      <button type="button" class="hx-pause" aria-pressed="false">Pause slideshow</button>
+    </div>
+  </section>
+
+  <form class="hx-search" id="hx-search" role="search" aria-label="Find a home">
+    <div class="hx-field">
+      <label for="f-area">Community</label>
+      <select id="f-area" name="area">
+        <option value="any">Anywhere in Dubai</option>
+        <option value="palm">Palm Jumeirah</option>
+        <option value="emirates-hills">Emirates Hills</option>
+        <option value="dubai-hills">Dubai Hills Estate</option>
+        <option value="downtown">Downtown</option>
+        <option value="marina">Dubai Marina</option>
+        <option value="tilal">Tilal Al Ghaf</option>
+        <option value="creek">Dubai Creek Harbour</option>
+      </select>
+    </div>
+    <div class="hx-field">
+      <label for="f-type">Home</label>
+      <select id="f-type" name="type">
+        <option value="any">Villa or apartment</option>
+        <option value="villa">Villa</option>
+        <option value="apartment">Apartment</option>
+      </select>
+    </div>
+    <div class="hx-field">
+      <label for="f-budget">Budget</label>
+      <select id="f-budget" name="budget">
+        <option value="0-1e12">Any budget</option>
+        <option value="0-3e6">Under AED 3M</option>
+        <option value="3e6-10e6">AED 3M to 10M</option>
+        <option value="10e6-40e6">AED 10M to 40M</option>
+        <option value="40e6-1e12">Above AED 40M</option>
+      </select>
+    </div>
+    <button class="btn dark" type="submit">Search homes</button>
+  </form>
+</header>
+
+<main>
+
+<section class="intro grid" aria-labelledby="intro-h">
+  <h2 id="intro-h" data-reveal>Own it outright</h2>
+  <p class="note" data-reveal style="--d:1">Since 2002, foreign buyers have held full freehold title in Dubai’s designated zones: the land, the building, and the right to sell, let or leave it to your children.</p>
+
+  <dl class="facts">
+    <div data-reveal style="--d:0"><dt class="num">0%</dt><dd>annual property tax, and no income tax on rent</dd></div>
+    <div data-reveal style="--d:1"><dt class="num">4%</dt><dd>one-off Dubai Land Department transfer fee</dd></div>
+    <div data-reveal style="--d:2"><dt class="num">AED 2M</dt><dd>the purchase price that opens a 10-year Golden Visa</dd></div>
+    <div data-reveal style="--d:3"><dt class="num">1 day</dt><dd>to transfer the title at a DLD trustee office</dd></div>
+  </dl>
+
+  <div class="orbit">
+    <div class="orbit-text" data-reveal>
+      <h3>Twelve years, seen from orbit</h3>
+      <p>NASA’s satellite frames from 2000 to 2011. The Palm and The World are dredged out of the Gulf, the Marina is cut inland and Downtown rises on open desert. Most of what we sell today was sand in the first frame.</p>
+    </div>
+    <figure data-reveal style="--d:1">
+      <div class="frame">
+        <video autoplay muted loop playsinline preload="metadata" poster="assets/dubai-s-rapid-growth-poster.jpg" width="854" height="480" aria-label="False-colour satellite time-lapse of Dubai's coastline from 2000 to 2011, showing the Palm islands and new districts appearing"><source src="assets/dubai-s-rapid-growth.webm" type="video/webm"></video>
+      </div>
+      <figcaption>Landsat time-lapse of the Dubai coast, 2000–2011, NASA</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="lst" id="listings" aria-labelledby="list-h">
+  <div class="lst-head">
+    <div>
+      <h2 id="list-h" data-reveal>Featured residences</h2>
+      <p class="lst-note" data-reveal style="--d:1">Asking prices for November 2026. Every home comes with its service charge, its last DLD transfer price and the view at five in the afternoon.</p>
+    </div>
+    <div class="chips" role="group" aria-label="Filter homes" data-reveal style="--d:2">
+      <button type="button" class="chip" data-chip="any" aria-pressed="true">All homes</button>
+      <button type="button" class="chip" data-chip="villa" aria-pressed="false">Villas</button>
+      <button type="button" class="chip" data-chip="apartment" aria-pressed="false">Apartments</button>
+      <button type="button" class="chip" data-chip="offplan" aria-pressed="false">Off-plan</button>
+    </div>
+  </div>
+  <p class="run-status" id="run-status" role="status" aria-live="polite"></p>
+  <ul class="lst-grid" id="run" aria-label="Homes for sale">
+      <li class="card feat" data-area="palm" data-type="villa" data-price="38500000" data-status="ready" data-reveal style="--d:0">
+        <a href="#contact" data-enquire="Signature villa, Frond G, Palm Jumeirah">
+          <div class="frame card-img"><img src="assets/u-1580587771525-78b9dba3b914.jpg" width="1600" height="1200" alt="Modern three-level villa with a terracotta-clad volume, glass walls and an infinity pool" loading="lazy"><span class="tag">Private beach</span></div>
+          <div class="card-body">
+            <p class="card-where">Palm Jumeirah</p>
+            <h3 class="card-name">Signature villa, Frond G</h3>
+            <ul class="card-spec"><li>5 beds</li><li>6 baths</li><li>7,200 sq ft</li></ul>
+            <p class="card-price num">AED 38,500,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card" data-area="emirates-hills" data-type="villa" data-price="46000000" data-status="ready" data-reveal style="--d:1">
+        <a href="#contact" data-enquire="Montgomerie Lakeside, Emirates Hills">
+          <div class="frame card-img"><img src="assets/u-1613977257363-707ba9348227.jpg" width="1600" height="1067" alt="White cubic villa with a long pool and sun loungers in a landscaped garden" loading="lazy"><span class="tag">Golf frontage</span></div>
+          <div class="card-body">
+            <p class="card-where">Emirates Hills</p>
+            <h3 class="card-name">Montgomerie Lakeside</h3>
+            <ul class="card-spec"><li>6 beds</li><li>8 baths</li><li>14,500 sq ft</li></ul>
+            <p class="card-price num">AED 46,000,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card" data-area="dubai-hills" data-type="villa" data-price="9750000" data-status="ready" data-reveal style="--d:2">
+        <a href="#contact" data-enquire="Sidra III, Dubai Hills Estate">
+          <div class="frame card-img"><img src="assets/u-1600596542815-ffad4c1539a9.jpg" width="1600" height="1061" alt="White villa with a roof terrace above a sculpted pool" loading="lazy"><span class="tag">Ready</span></div>
+          <div class="card-body">
+            <p class="card-where">Dubai Hills Estate</p>
+            <h3 class="card-name">Sidra III</h3>
+            <ul class="card-spec"><li>4 beds</li><li>5 baths</li><li>4,850 sq ft</li></ul>
+            <p class="card-price num">AED 9,750,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card" data-area="downtown" data-type="apartment" data-price="7900000" data-status="ready" data-reveal style="--d:0">
+        <a href="#contact" data-enquire="Opera District, high floor, Downtown">
+          <div class="frame card-img"><img src="assets/u-1600607687939-ce8a6c25118c.jpg" width="1600" height="1088" alt="Open-plan living room with a pale sofa, timber wall and kitchen beyond" loading="lazy"><span class="tag">Burj view</span></div>
+          <div class="card-body">
+            <p class="card-where">Downtown</p>
+            <h3 class="card-name">Opera District, high floor</h3>
+            <ul class="card-spec"><li>3 beds</li><li>4 baths</li><li>2,480 sq ft</li></ul>
+            <p class="card-price num">AED 7,900,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card" data-area="tilal" data-type="villa" data-price="6800000" data-status="ready" data-reveal style="--d:1">
+        <a href="#contact" data-enquire="Harmony, lagoon edge, Tilal Al Ghaf">
+          <div class="frame card-img"><img src="assets/u-1613490493576-7fde63acd811.jpg" width="1600" height="1067" alt="Two-storey villa with timber soffits behind a dark-tiled pool" loading="lazy"><span class="tag">Ready</span></div>
+          <div class="card-body">
+            <p class="card-where">Tilal Al Ghaf</p>
+            <h3 class="card-name">Harmony, lagoon edge</h3>
+            <ul class="card-spec"><li>4 beds</li><li>5 baths</li><li>4,200 sq ft</li></ul>
+            <p class="card-price num">AED 6,800,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card" data-area="marina" data-type="apartment" data-price="3450000" data-status="ready" data-reveal style="--d:2">
+        <a href="#contact" data-enquire="Marina Gate duplex, Dubai Marina">
+          <div class="frame card-img"><img src="assets/u-1600566753086-00f18fb6b3ea.jpg" width="1600" height="1067" alt="Double-height living room with an open staircase and a dog asleep by the sofa" loading="lazy"><span class="tag">Let to 2027</span></div>
+          <div class="card-body">
+            <p class="card-where">Dubai Marina</p>
+            <h3 class="card-name">Marina Gate duplex</h3>
+            <ul class="card-spec"><li>2 beds</li><li>3 baths</li><li>1,640 sq ft</li></ul>
+            <p class="card-price num">AED 3,450,000</p>
+          </div>
+        </a>
+      </li>
+      <li class="card wide" data-area="creek" data-type="apartment" data-price="1890000" data-status="offplan" data-reveal style="--d:0">
+        <a href="#contact" data-enquire="Creek Waters, Dubai Creek Harbour">
+          <div class="frame card-img"><img src="assets/u-1616594039964-ae9021a400a0.jpg" width="1600" height="1600" alt="Bedroom with an upholstered white bed, dark walls and a brass chandelier" loading="lazy"><span class="tag">Off-plan · 60/40</span></div>
+          <div class="card-body">
+            <p class="card-where">Dubai Creek Harbour</p>
+            <h3 class="card-name">Creek Waters</h3>
+            <ul class="card-spec"><li>1 bed</li><li>2 baths</li><li>820 sq ft</li></ul>
+            <p class="card-price num">AED 1,890,000</p>
+          </div>
+        </a>
+      </li>
+  </ul>
+  <p class="lst-more"><a href="#contact">Ask for the full list, including off-market homes</a></p>
+</section>
+
+<section class="areas grid" id="communities" aria-labelledby="areas-h">
+  <h2 id="areas-h" data-reveal><span>Where we sell, and what</span><span>a square foot costs</span></h2>
+
+  <figure class="areas-photo" data-reveal>
+    <div class="frame"><img src="assets/emirates-hills-arabian-night.jpg" width="1920" height="3410" alt="A lit garden path in Emirates Hills at night with palm trees and the Marina towers on the horizon" loading="lazy"></div>
+    <figcaption>Emirates Hills after dark, the Marina behind</figcaption>
+  </figure>
+
+  <table data-reveal style="--d:1">
+    <caption>Indicative asking prices per square foot, Q4 2026. Pick a row to price a typical home in it below.</caption>
+    <thead class="vh"><tr><th scope="col">Home type</th><th scope="col">Community</th><th scope="col">Asking price per sq ft</th></tr></thead>
+    <tbody>
+      <tr><td class="kind">Villa</td><td class="place">Palm Jumeirah, Signature fronds<small class="vh"> · Villa</small></td><td class="val num"><a href="#costs" data-price="35000000">AED 6,800 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Apartment</td><td class="place">Palm Jumeirah, Shoreline</td><td class="val num"><a href="#costs" data-price="4200000">AED 3,300 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Apartment</td><td class="place">Dubai Marina and JBR</td><td class="val num"><a href="#costs" data-price="2400000">AED 2,250 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Apartment</td><td class="place">Dubai Creek Harbour</td><td class="val num"><a href="#costs" data-price="2100000">AED 2,450 <span aria-hidden="true">→</span></a></td></tr>
+    </tbody>
+    <tbody>
+      <tr><td class="kind">Villa</td><td class="place">Emirates Hills</td><td class="val num"><a href="#costs" data-price="45000000">AED 4,900 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Villa</td><td class="place">Dubai Hills Estate</td><td class="val num"><a href="#costs" data-price="8500000">AED 2,600 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Villa</td><td class="place">Al Barari</td><td class="val num"><a href="#costs" data-price="14000000">AED 2,100 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Villa</td><td class="place">Tilal Al Ghaf</td><td class="val num"><a href="#costs" data-price="6500000">AED 2,300 <span aria-hidden="true">→</span></a></td></tr>
+    </tbody>
+    <tbody>
+      <tr><td class="kind">Apartment</td><td class="place">Downtown and Opera District</td><td class="val num"><a href="#costs" data-price="3800000">AED 3,200 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Apartment</td><td class="place">City Walk</td><td class="val num"><a href="#costs" data-price="3600000">AED 2,750 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Apartment</td><td class="place">Business Bay</td><td class="val num"><a href="#costs" data-price="1900000">AED 2,300 <span aria-hidden="true">→</span></a></td></tr>
+      <tr><td class="kind">Townhouse</td><td class="place">Jumeirah Village Circle</td><td class="val num"><a href="#costs" data-price="1600000">AED 1,350 <span aria-hidden="true">→</span></a></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="costs grid" id="costs" aria-labelledby="costs-h">
+  <div class="costs-head">
+    <h2 id="costs-h" data-reveal>What it really costs to buy</h2>
+    <p data-reveal style="--d:1">The asking price is never the cheque you write. Set the price and how you are paying; the statement adds the Land Department, trustee, agency and bank fees the way they will appear on transfer day.</p>
+
+    <form class="controls" id="calc" onsubmit="return false" data-reveal style="--d:2">
+      <div>
+        <label class="lab" for="price">Purchase price</label>
+        <output class="price-out num" id="price-out" for="price">AED 3,500,000</output>
+        <input type="range" id="price" min="750000" max="50000000" step="50000" value="3500000" aria-describedby="price-out">
+        <div class="presets" role="group" aria-label="Typical prices">
+          <button type="button" data-price="1900000">1.9M studio-plus</button>
+          <button type="button" data-price="3500000">3.5M two-bed</button>
+          <button type="button" data-price="9000000">9M villa</button>
+          <button type="button" data-price="35000000">35M on the Palm</button>
+        </div>
+      </div>
+      <fieldset>
+        <legend>Paying with</legend>
+        <div class="seg">
+          <input type="radio" name="pay" id="pay-cash" value="cash" checked><label for="pay-cash">Cash</label>
+          <input type="radio" name="pay" id="pay-mort" value="mortgage"><label for="pay-mort">A mortgage</label>
+        </div>
+      </fieldset>
+      <fieldset class="mort-only" id="res-field" hidden>
+        <legend>You live</legend>
+        <div class="seg">
+          <input type="radio" name="res" id="res-uae" value="resident" checked><label for="res-uae">In the UAE</label>
+          <input type="radio" name="res" id="res-abroad" value="overseas"><label for="res-abroad">Overseas</label>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <div class="statement" aria-live="polite" data-reveal style="--d:1">
+    <h3>Your transfer-day statement</h3>
+    <p class="for" id="st-for">Ready home, cash purchase</p>
+    <dl>
+      <div class="row"><dt>Purchase price</dt><dd class="num" id="v-price"></dd></div>
+      <div class="row mort-row" hidden><dt>Mortgage from the bank<small id="ltv-note"></small></dt><dd class="num" id="v-loan"></dd></div>
+      <div class="row"><dt>DLD transfer fee<small>4% of the price</small></dt><dd class="num" id="v-dld"></dd></div>
+      <div class="row"><dt>DLD title deed and admin</dt><dd class="num" id="v-admin"></dd></div>
+      <div class="row"><dt>Trustee office fee<small>including VAT</small></dt><dd class="num" id="v-trustee"></dd></div>
+      <div class="row"><dt>Brokerage<small>2% plus VAT</small></dt><dd class="num" id="v-agency"></dd></div>
+      <div class="row mort-row" hidden><dt>Mortgage registration<small>0.25% of the loan plus AED 290</small></dt><dd class="num" id="v-mreg"></dd></div>
+      <div class="row mort-row" hidden><dt>Bank arrangement and valuation<small>up to 1% of the loan, plus valuation, with VAT</small></dt><dd class="num" id="v-bank"></dd></div>
+    </dl>
+    <div class="total">
+      <output class="num" id="v-total" for="price"></output>
+      <p id="total-label">Cash you need on transfer day</p>
+      <p class="monthly num mort-row" id="v-monthly" hidden></p>
+    </div>
+    <p class="visa" id="v-visa"></p>
+    <div class="actions">
+      <a class="btn dark" id="send" href="#contact">Email me this statement</a>
+    </div>
+    <p class="fine">Follows the published Dubai Land Department fee schedule and UAE Central Bank loan-to-value limits for a first home. Mortgage shown at 4.25% over 25 years for illustration; your bank’s offer will differ.</p>
+  </div>
+</section>
+
+<section class="process grid" aria-labelledby="proc-h">
+  <h2 id="proc-h" data-reveal>Keys in thirty days</h2>
+
+  <figure class="p1" data-reveal>
+    <div class="frame"><img src="assets/abra-at-dubai-creek-old-dubai.jpg" width="1920" height="2870" alt="Black and white photograph of a wooden abra ferry moored on Dubai Creek" loading="lazy"></div>
+    <figcaption>An abra on the Creek, where Dubai first traded</figcaption>
+  </figure>
+  <div class="stage t1" data-reveal style="--d:1">
+    <p><b>In the first week,</b> we talk before we send anything. Budget, timeline, whether you need the visa, whether the home is for living in or letting. Then a shortlist of homes we have walked through ourselves.</p>
+    <p>Every home on it arrives with its service charge per square foot, its last transfer price from DLD records and any snagging history.</p>
+  </div>
+
+  <figure class="p2" data-reveal>
+    <div class="frame"><img src="assets/u-1600210492486-724fe5c67fb0.jpg" width="1600" height="1200" alt="Bright living room with a leather sofa, plants and a wall of framed prints" loading="lazy"></div>
+  </figure>
+  <div class="stage t2" data-reveal style="--d:1">
+    <p><b>By the second week,</b> you have seen them all in one day, driven in the order that avoids Sheikh Zayed Road at rush hour. We negotiate, sign Form F, the Land Department’s sale agreement, and hold the 10% deposit as trustee.</p>
+    <p>Buying from overseas? Viewings run live on video, and a power of attorney lets us sign for you.</p>
+  </div>
+
+  <div class="stage t3" data-reveal style="--d:1">
+    <p><b>On transfer day,</b> the developer has issued its no-objection certificate, your bank has released the mortgage, and everyone meets at a DLD trustee office. The title deed is printed in your name before you leave the building.</p>
+    <p>We stay for the handover: DEWA connection, chiller account, access cards and the Ejari if you are letting.</p>
+  </div>
+  <figure class="p3" data-reveal>
+    <div class="frame"><img src="assets/burj-khalifa-dubai-uae-at-sunset-001.jpg" width="1920" height="1440" alt="The Burj Khalifa and Downtown skyline silhouetted against a low sun, seen from a highway bridge" loading="lazy"></div>
+    <figcaption>Downtown at sunset, from the highway in</figcaption>
+  </figure>
+</section>
+
+<section class="faq grid" id="questions" aria-labelledby="faq-h">
+  <div class="faq-col">
+    <h2 id="faq-h" data-reveal>Questions buyers ask</h2>
+    <ul class="visit" data-reveal style="--d:1">
+      <li>Building 6, Dubai Design District</li>
+      <li><span>Monday to Friday, 9:00 to 19:00 · Saturday by appointment</span></li>
+      <li><span>Parking in the d3 garage, 12 minutes from DIFC</span></li>
+    </ul>
+    <div class="qs" data-reveal style="--d:2">
+      <details>
+        <summary>Can I buy if I don’t live in the UAE?<span class="chev" aria-hidden="true"></span></summary>
+        <p>Yes. Foreign nationals can buy freehold in Dubai’s designated areas, which include the Palm, the Marina, Downtown, Dubai Hills and Emirates Hills, with a passport alone. You do not need residency to own.</p>
+      </details>
+      <details>
+        <summary>Does buying give me a visa?<span class="chev" aria-hidden="true"></span></summary>
+        <p>A home worth AED 750,000 or more qualifies for a two-year renewable property investor visa. At AED 2 million or more you can apply for the ten-year Golden Visa, including on a mortgaged or off-plan home.</p>
+      </details>
+      <details>
+        <summary>What do I pay on top of the price?<span class="chev" aria-hidden="true"></span></summary>
+        <p>The 4% Land Department fee, about AED 4,200 for the trustee office, a few hundred dirhams of admin and 2% brokerage plus VAT. Mortgages add registration and bank fees. The statement above adds them all for your price.</p>
+      </details>
+      <details>
+        <summary>Can I get a mortgage from overseas?<span class="chev" aria-hidden="true"></span></summary>
+        <p>Yes. UAE banks lend to non-residents, usually up to half the value. Residents buying a first home can borrow up to 80% under AED 5 million and 70% above it.</p>
+      </details>
+      <details>
+        <summary>Off-plan or ready?<span class="chev" aria-hidden="true"></span></summary>
+        <p>Off-plan costs less to enter and is paid in stages, often 60/40 or with payments after handover, but you wait two to four years. A ready home earns rent from the first month and you can inspect exactly what you buy.</p>
+      </details>
+      <details>
+        <summary>What will it cost to keep each year?<span class="chev" aria-hidden="true"></span></summary>
+        <p>Service charges are set per square foot and published in the RERA index; on the communities above they run from about AED 12 to 35. There is no annual property tax. We put the real figure on every listing.</p>
+      </details>
+    </div>
+    <div class="close" data-reveal style="--d:3">
+      <a class="btn" href="#contact">Book a call</a>
+      <a href="https://wa.me/918275257252" rel="noopener">Message us on WhatsApp</a>
+    </div>
+  </div>
+  <div class="faq-pics">
+    <figure class="tall">
+      <div class="frame"><img src="assets/burj-khalifa-and-surrounding-buildings-during-sunset.jpg" width="1920" height="2574" alt="The Burj Khalifa rising above Downtown towers in warm evening light" loading="lazy"></div>
+    </figure>
+    <figure class="sq" data-reveal>
+      <div class="frame"><img src="assets/dubai-desert-dunes-1.jpg" width="1920" height="1279" alt="Wind-shaped orange sand dunes in the desert outside Dubai under a pale blue sky" loading="lazy"></div>
+    </figure>
+  </div>
+</section>
+
+<section class="enq" id="contact" aria-labelledby="contact-h">
+  <figure class="enq-pic" data-reveal>
+    <div class="frame"><img src="assets/wind-tower-barjeel-in-al-fahidi-historical.jpg" width="1920" height="1440" style="object-position:50% 85%" alt="A coral-stone barjeel wind tower among trees in the Al Fahidi historical neighbourhood" loading="lazy"></div>
+    <figcaption>A barjeel wind tower in Al Fahidi, old Dubai</figcaption>
+  </figure>
+  <div class="enq-body">
+    <h2 id="contact-h" data-reveal>Request a private viewing</h2>
+    <p class="enq-lead" data-reveal style="--d:1">Tell us the community, your budget and when you want the keys. We send back three homes worth seeing, usually within the working day.</p>
+    <form class="enq-form" id="enq" data-reveal style="--d:2">
+      <div class="fld"><label for="e-name">Your name</label><input id="e-name" name="name" autocomplete="name" required></div>
+      <div class="fld"><label for="e-phone">Phone or WhatsApp</label><input id="e-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required></div>
+      <div class="fld wide"><label for="e-mail">Email <span class="opt">(optional)</span></label><input id="e-mail" name="email" type="email" autocomplete="email"></div>
+      <div class="fld"><label for="e-area">Community</label><select id="e-area" name="area">
+        <option>Not sure yet</option><option>Palm Jumeirah</option><option>Emirates Hills</option><option>Dubai Hills Estate</option><option>Downtown</option><option>Dubai Marina</option><option>Tilal Al Ghaf</option><option>Dubai Creek Harbour</option>
+      </select></div>
+      <div class="fld"><label for="e-budget">Budget</label><select id="e-budget" name="budget">
+        <option>Not sure yet</option><option>Under AED 3M</option><option>AED 3M to 10M</option><option>AED 10M to 40M</option><option>Above AED 40M</option>
+      </select></div>
+      <div class="fld wide"><label for="e-msg">Anything else <span class="opt">(optional)</span></label><textarea id="e-msg" name="message" rows="3" placeholder="A home you saw above, a move-in date, a view you want"></textarea></div>
+      <div class="enq-send wide">
+        <button class="btn dark" type="submit">Send request</button>
+        <p class="enq-hint" id="enq-hint">Opens your email app with these details filled in.</p>
+      </div>
+    </form>
+    <ul class="enq-direct" data-reveal style="--d:3">
+      <li><span>Email</span><a href="mailto:contact@cyphrontech.com">contact@cyphrontech.com</a></li>
+      <li><span>WhatsApp</span><a href="https://wa.me/918275257252" rel="noopener">+91 82752 57252</a></li>
+      <li><span>Office</span>Building 6, Dubai Design District</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot-cols">
+    <section aria-labelledby="f-visit">
+      <h2 id="f-visit">Visit</h2>
+      <address>Building 6, Dubai Design District<br>Dubai, United Arab Emirates</address>
+    </section>
+    <nav aria-labelledby="f-pages">
+      <h2 id="f-pages">Pages</h2>
+      <ul><li><a href="#listings">Listings</a></li><li><a href="#communities">Communities</a></li><li><a href="#costs">Costs</a></li><li><a href="#questions">Questions</a></li><li><a href="#top">Back to top</a></li></ul>
+    </nav>
+    <nav aria-labelledby="f-follow">
+      <h2 id="f-follow">Follow</h2>
+      <!-- placeholder profiles: swap for the client's own accounts -->
+      <ul><li><a href="https://www.instagram.com/" rel="noopener" target="_blank">Instagram<span class="vh"> (opens in a new tab)</span></a></li><li><a href="https://www.linkedin.com/" rel="noopener" target="_blank">LinkedIn<span class="vh"> (opens in a new tab)</span></a></li><li><a href="https://www.youtube.com/" rel="noopener" target="_blank">YouTube<span class="vh"> (opens in a new tab)</span></a></li></ul>
+    </nav>
+    <section aria-labelledby="f-hours">
+      <h2 id="f-hours">Hours</h2>
+      <ul><li>Mon to Fri, <time>9:00</time> to <time>19:00</time></li><li>Saturday by appointment</li></ul>
+    </section>
+  </div>
+  <p class="credits">Pictures and footage: <a href="https://commons.wikimedia.org/wiki/File:Dubai_skyline_at_dusk.jpg">“Dubai skyline at dusk”</a> by Paul Morgan, <a href="https://creativecommons.org/licenses/by/2.0">CC BY 2.0</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=54635242">“Atlantis on Palm Jumeirah”</a> by giggel, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Dubai_Marina_Skyline_93.jpg">“Dubai Marina Skyline 93”</a> by Khanshahab06, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Dubai%27s_Rapid_Growth.ogv">“Dubai’s Rapid Growth”</a> by NASA/Goddard Space Flight Center, public domain; <a href="https://commons.wikimedia.org/wiki/File:Emirates_hills_arabian_night.jpg">“Emirates hills arabian night”</a> by Emirateshills777, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Abra_at_Dubai_Creek_(_Old_Dubai_).jpg">“Abra at Dubai Creek (Old Dubai)”</a> by selmaperictuzla, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Burj_Khalifa_Dubai,_UAE_at_Sunset_001_by_Eric_Chamchoum.jpg">“Burj Khalifa Dubai, UAE at Sunset 001”</a> by ECWiki1, <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Burj_Khalifa_and_surrounding_buildings_during_sunset.jpg">“Burj Khalifa and surrounding buildings during sunset”</a> by Zeeeeeeeeeeeeeeeeeeeeeeeshan, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Dubai_desert_dunes_1.jpg">“Dubai desert dunes 1”</a> by Gfilip, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=87269355">“Wind Tower (Barjeel) in Al Fahidi”</a> by Wadimaktoob, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>; all via Wikimedia Commons. Villa and interior photographs from <a href="https://unsplash.com">Unsplash</a>.</p>
+  <svg class="big" viewBox="0 0 1000 300" role="img" aria-label="Sahil"><text x="-6" y="282" font-family="Cormorant Garamond, Georgia, serif" font-weight="300" font-size="400" letter-spacing="-8" textLength="1008" lengthAdjust="spacing">Sahil</text></svg>
+  <div class="legal">
+    <span>© 2026 Sahil Residences is a concept brand. Listings, prices and photos are samples.</span>
+    <span>Concept site by <a href="https://cyphrontech.com/">CyphronTech</a></span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const aed = n => 'AED ' + Math.round(n).toLocaleString('en-US');
+
+  /* Section entrances */
+  const els = $$('[data-reveal]');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach(el => io.observe(el));
+  } else els.forEach(el => el.classList.add('in'));
+
+  /* Pause the loop for reduced motion */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) $$('video').forEach(v => { v.removeAttribute('autoplay'); v.pause(); });
+
+  /* Listings run: arrow buttons */
+  const run = $('#run');
+  $$('.run-ctrl button').forEach(b => b.addEventListener('click', () =>
+    run.scrollBy({ left: +b.dataset.dir * run.clientWidth * 0.7, behavior: 'smooth' })));
+
+  /* The transfer-day statement */
+  const price = $('#price');
+  // Fees per published DLD schedule and Central Bank LTV caps (expat first home).
+  function costs(P, pay, res) {
+    const f = { price: P, dld: 0.04 * P, admin: 580, trustee: P >= 500000 ? 4200 : 2100, agency: 0.021 * P };
+    let loan = 0, mreg = 0, bank = 0, monthly = 0, ltv = 0;
+    if (pay === 'mortgage') {
+      ltv = res === 'overseas' ? 0.5 : (P <= 5e6 ? 0.8 : 0.7);
+      loan = P * ltv; mreg = 0.0025 * loan + 290; bank = 0.0105 * loan + 3150;
+      const r = 0.0425 / 12, n = 300;
+      monthly = loan * r / (1 - Math.pow(1 + r, -n));
+    }
+    const fees = f.dld + f.admin + f.trustee + f.agency + mreg + bank;
+    return { ...f, ltv, loan, mreg, bank, monthly, fees, total: P - loan + fees, visa: P >= 2e6 };
+  }
+  // self-check: AED 2M cash = 80,000 + 580 + 4,200 + 42,000 in fees
+  console.assert(Math.round(costs(2e6, 'cash').fees) === 126780, 'fee check failed');
+
+  function render(flash) {
+    const P = +price.value;
+    const pay = $('input[name=pay]:checked').value;
+    const res = $('input[name=res]:checked').value;
+    const c = costs(P, pay, res);
+    const mort = pay === 'mortgage';
+    $('#price-out').textContent = aed(P);
+    price.setAttribute('aria-valuetext', aed(P));
+    $('#res-field').hidden = !mort;
+    $$('.mort-row').forEach(r => r.hidden = !mort);
+    $('#st-for').textContent = mort ? `Ready home, mortgage, buyer ${res === 'overseas' ? 'living overseas' : 'resident in the UAE'}` : 'Ready home, cash purchase';
+    $('#v-price').textContent = aed(P);
+    $('#v-loan').textContent = '− ' + aed(c.loan);
+    $('#ltv-note').textContent = `${Math.round(c.ltv * 100)}% of the price`;
+    $('#v-dld').textContent = aed(c.dld);
+    $('#v-admin').textContent = aed(c.admin);
+    $('#v-trustee').textContent = aed(c.trustee);
+    $('#v-agency').textContent = aed(c.agency);
+    $('#v-mreg').textContent = aed(c.mreg);
+    $('#v-bank').textContent = aed(c.bank);
+    $('#v-total').textContent = aed(c.total);
+    $('#total-label').textContent = mort ? 'Deposit and fees you need on transfer day' : 'Cash you need on transfer day';
+    $('#v-monthly').textContent = `Then about ${aed(c.monthly)} a month for 25 years`;
+    const v = $('#v-visa');
+    v.textContent = c.visa ? 'At this price you can apply for the 10-year Golden Visa.' : `This qualifies for the two-year investor visa. Another ${aed(2e6 - P)} reaches the 10-year Golden Visa.`;
+    v.classList.toggle('short', !c.visa);
+    const body = [`Price: ${aed(P)}`, `Paying with: ${mort ? 'mortgage (' + res + ')' : 'cash'}`, `Fees: ${aed(c.fees)}`, `Needed on transfer day: ${aed(c.total)}`, mort ? `Monthly: about ${aed(c.monthly)}` : '', '', 'Community I am looking at:', 'When I want the keys:'].filter((l, i) => l || i > 4).join('\n');
+    $('#send').href = 'mailto:contact@cyphrontech.com?subject=' + encodeURIComponent('My transfer-day statement, ' + aed(P)) + '&body=' + encodeURIComponent(body);
+    if (flash) { const t = $('#v-total'); t.classList.remove('flash'); void t.offsetWidth; t.classList.add('flash'); }
+  }
+  price.addEventListener('input', () => render(false));
+  $$('#calc input[type=radio]').forEach(r => r.addEventListener('change', () => render(true)));
+  $$('[data-price]').forEach(b => b.addEventListener('click', () => { price.value = b.dataset.price; render(true); }));
+  render(false);
+
+
+  /* Hero slideshow: auto-advances every 7s, pausable, still under reduced motion */
+  const hx = $('.hx');
+  if (hx) {
+    const slides = $$('.hx-slide', hx), tabs = $$('[data-go]', hx), pauseBtn = $('.hx-pause', hx);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let cur = 0, timer, paused = reduce;
+    if (reduce) { hx.classList.add('static'); pauseBtn.hidden = true; }
+    const schedule = () => { clearTimeout(timer); if (!paused) timer = setTimeout(() => show(cur + 1), 7000); };
+    function show(n) {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => s.classList.toggle('on', k === cur));
+      tabs.forEach((t, k) => { t.classList.toggle('on', k === cur); t.setAttribute('aria-pressed', k === cur); });
+      schedule();
+    }
+    tabs.forEach(t => t.addEventListener('click', () => show(+t.dataset.go)));
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      hx.classList.toggle('paused', paused);
+      pauseBtn.setAttribute('aria-pressed', paused);
+      pauseBtn.textContent = paused ? 'Play slideshow' : 'Pause slideshow';
+      schedule();
+    });
+    schedule();
+  }
+
+  /* Hero search: filters the listings run, then scrolls to it */
+  const form = $('#hx-search'), status = $('#run-status');
+  const items = $$('#run > li');
+  const label = sel => sel.options[sel.selectedIndex].text;
+  function showAll() { items.forEach(li => li.hidden = false); status.textContent = ''; }
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const area = form.area.value, type = form.type.value;
+    const [lo, hi] = form.budget.value.split('-').map(Number);
+    let n = 0;
+    items.forEach(li => {
+      const ok = (area === 'any' || li.dataset.area === area) && (type === 'any' || li.dataset.type === type) && +li.dataset.price >= lo && +li.dataset.price < hi;
+      li.hidden = !ok; if (ok) n++;
+    });
+    const what = [label(form.type), label(form.area), label(form.budget)].join(' · ');
+    if (n === 0) {
+      items.forEach(li => li.hidden = false);
+      status.innerHTML = '';
+      status.append(`Nothing on the market this month for ${what}, so here is everything. Ask us about off-market homes.`);
+    } else {
+      status.innerHTML = '';
+      status.append(`${n} ${n === 1 ? 'home matches' : 'homes match'}: ${what}.`);
+      const all = document.createElement('button');
+      all.type = 'button'; all.textContent = 'Show all homes';
+      all.addEventListener('click', showAll);
+      status.append(all);
+    }
+    $('#run').scrollLeft = 0;
+    $('#listings').scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  });
+  // self-check: the price data the filter reads is present on every listing
+  console.assert(items.every(li => li.dataset.area && li.dataset.type && +li.dataset.price > 0), 'listing data missing');
+
+
+  /* Listing chips: quick filter by home type or off-plan */
+  const chips = [...document.querySelectorAll('.chip')];
+  chips.forEach(c => c.addEventListener('click', () => {
+    const v = c.dataset.chip;
+    chips.forEach(x => x.setAttribute('aria-pressed', x === c));
+    let n = 0;
+    document.querySelectorAll('#run > li').forEach(li => {
+      const ok = v === 'any' || (v === 'offplan' ? li.dataset.status === 'offplan' : li.dataset.type === v);
+      li.hidden = !ok; if (ok) n++;
+    });
+    document.getElementById('run-status').textContent = v === 'any' ? '' : `${n} ${n === 1 ? 'home' : 'homes'} shown.`;
+  }));
+
+  /* "Enquire" from a listing card pre-fills the message */
+  document.querySelectorAll('[data-enquire]').forEach(a => a.addEventListener('click', () => {
+    const m = document.getElementById('e-msg');
+    if (m && !m.value) m.value = 'I would like to view: ' + a.dataset.enquire;
+  }));
+
+  /* Enquiry form: native validation, then opens an email with the details */
+  const enq = document.getElementById('enq');
+  enq.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!enq.checkValidity()) { enq.reportValidity(); return; }
+    const f = enq.elements;
+    const body = [`Name: ${f.name.value}`, `Phone / WhatsApp: ${f.phone.value}`, f.email.value && `Email: ${f.email.value}`, `Community: ${f.area.value}`, `Budget: ${f.budget.value}`, '', f.message.value].filter(l => l !== '').join('\n');
+    location.href = 'mailto:contact@cyphrontech.com?subject=' + encodeURIComponent('Private viewing request, ' + f.name.value) + '&body=' + encodeURIComponent(body);
+  });
+
+  /* Mobile menu */
+  const toggle = document.querySelector('.nav-toggle'), mnav = document.getElementById('mnav'), navEl = document.querySelector('.nav');
+  const setMenu = open => {
+    toggle.setAttribute('aria-expanded', open);
+    toggle.querySelector('.nt-label').textContent = open ? 'Close' : 'Menu';
+    mnav.hidden = !open;
+    navEl.classList.toggle('menu-open', open);
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (open) mnav.querySelector('a').focus();
+  };
+  toggle.addEventListener('click', () => setMenu(mnav.hidden));
+  mnav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !mnav.hidden) { setMenu(false); toggle.focus(); } });
+  matchMedia('(min-width: 761px)').addEventListener('change', e => { if (e.matches && !mnav.hidden) setMenu(false); });
+  /* Nav turns solid once the page scrolls */
+  const nav = $(".nav");
+  const onScroll = () => nav.classList.toggle("scrolled", scrollY > 40);
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+})();
+</script>
+</body>
+</html>
