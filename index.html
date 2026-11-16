@@ -881,9 +881,58 @@ html { scroll-padding-top: 96px; }
   .mnav:not([hidden]) li:nth-child(4) { animation-delay: .15s; }
   .mnav:not([hidden]) li:nth-child(5) { animation-delay: .2s; }
 }
+
+/* Agency ribbon: shown only when the demo is opened directly, not inside a preview frame */
+.ribbon {
+  position: fixed; left: 50%; bottom: max(16px, env(safe-area-inset-bottom)); z-index: 30;
+  transform: translateX(-50%); width: min(calc(100% - 32px), 640px);
+  display: flex; align-items: center; gap: 12px; padding: 6px 6px 6px 18px;
+  border: 1px solid rgba(247, 242, 234, .16); border-radius: 999px;
+  background: rgba(27, 40, 56, .95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 18px 40px rgba(27, 40, 56, .35);
+  font-family: var(--sans); font-size: .875rem; color: var(--bg);
+}
+.ribbon[hidden] { display: none; }
+.ribbon p { flex: 1; min-width: 0; margin: 0; line-height: 1.35; }
+.ribbon p b { font-weight: 500; }
+.ribbon a {
+  flex: none; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px;
+  border-radius: 999px; background: var(--accent); color: var(--bg);
+  font-weight: 500; text-decoration: none; white-space: nowrap;
+}
+.ribbon a:hover, .ribbon a:focus-visible { background: var(--bg); color: var(--ink); }
+.ribbon button {
+  flex: none; width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: transparent; color: rgba(247, 242, 234, .75); font-size: 1.25rem; line-height: 1; cursor: pointer;
+}
+.ribbon button:hover, .ribbon button:focus-visible { color: var(--bg); background: rgba(247, 242, 234, .1); }
+@media (max-width: 560px) {
+  .ribbon { padding-left: 14px; gap: 8px; font-size: .8125rem; }
+  .ribbon .wide { display: none; }
+}
 </style>
 </head>
 <body>
+<aside class="ribbon" aria-label="About this demo" hidden>
+  <p><b>Concept site by CyphronTech.</b> <span class="wide">We build websites like this one.</span></p>
+  <a href="https://cyphrontech.com/web-development?utm_source=demo&amp;utm_medium=referral&amp;utm_campaign=dubai-real-estate" target="_blank" rel="noopener">Get one like this<span class="vh"> (opens in a new tab)</span></a>
+  <button type="button" aria-label="Hide this message">×</button>
+</aside>
+<script>
+  /* Ribbon: hidden inside frames (our own site previews this page) and after it is dismissed */
+  (() => {
+    const ribbon = document.querySelector('.ribbon');
+    let framed = true, dismissed = false;
+    try { framed = window.self !== window.top; } catch (e) {}
+    try { dismissed = sessionStorage.getItem('ribbon-hidden') === '1'; } catch (e) {}
+    if (framed || dismissed) return;
+    ribbon.hidden = false;
+    ribbon.querySelector('button').addEventListener('click', () => {
+      ribbon.hidden = true;
+      try { sessionStorage.setItem('ribbon-hidden', '1'); } catch (e) {}
+    });
+  })();
+</script>
 
 <nav class="nav" aria-label="Main">
     <ul>
@@ -1337,7 +1386,7 @@ html { scroll-padding-top: 96px; }
   <svg class="big" viewBox="0 0 1000 300" role="img" aria-label="Sahil"><text x="-6" y="282" font-family="Cormorant Garamond, Georgia, serif" font-weight="300" font-size="400" letter-spacing="-8" textLength="1008" lengthAdjust="spacing">Sahil</text></svg>
   <div class="legal">
     <span>© 2026 Sahil Residences is a concept brand. Listings, prices and photos are samples.</span>
-    <span>Concept site by <a href="https://cyphrontech.com/">CyphronTech</a></span>
+    <span>Concept site by <a href="https://cyphrontech.com/web-development?utm_source=demo&amp;utm_medium=referral&amp;utm_campaign=dubai-real-estate">CyphronTech</a></span>
   </div>
 </footer>
 
